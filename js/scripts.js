@@ -1,118 +1,138 @@
 // IMPERATIVA
-
-const letters = ['A', 'B', 'C', 'D'];
+const numbers = [1, 2, 3, 4, 5, 6];
+const letters = ['a', 'b', 'C', 'd'];
 
 // for (const number of numbers) {
-//   console.log(double);
+//   console.log(number);
 // }
 
 // DECLARATIVA
-// Callback, son funciones que son ejecutadas por otra función
-
-// numbers.forEach((number, index) => {
-//   console.log('NUMBER - ', number);
-//   console.log('INDEX - ', index);
+// numbers.forEach(number => {
+//   console.log('NUMBER', number);
 // });
 
-// LO QUE PASA POR DETRÁS
-// for (let i = 0; i < letters.length; i++){
-//   const letter = letters[i]
-//   const index = i
-// }
+// const lettersUpper = [];
 
-// const lettersLower = letters.map(letter => {
-//   return letter.toLowerCase();
+// letters.forEach(letter => {
+//   lettersUpper.push(letter.toUpperCase());
 // });
 
-// console.log(lettersLower);
+// map SIEMPRE genera un nuevo array y tenemos que guardarlo en una constante
 
-// const onlyEven2 = [];
+// const lettersUpper = letters.map(letter => letter.toUpperCase());
+// const numbersDouble = numbers.map(number => number * 2);
 
+// console.log(lettersUpper);
+// console.log(numbersDouble);
+
+// filter
+// const onlyEven = [];
+// const onlyOdd = [];
 // for (const number of numbers) {
 //   if (number % 2 === 0) {
-//     onlyEven2.push(number);
+//     onlyEven.push(number);
+//   }else{
+//     onlyOdd.push(number);
 //   }
 // }
 
-// const onlyEven = numbers.filter(number => {
-//   return number % 2 === 0;
-// });
+// const onlyEven = numbers.filter(number => number % 2 === 0);
+// const onlyOdd = numbers.filter(number => number % 2 !== 0);
 
-// let higherThan4 = true;
-// for (const number of numbers) {
-//   if (number < 4) {
-//     higherThan4 = false;
-//   }
-// }
+// console.log(onlyEven);
+// console.log(onlyOdd);
 
-// const allNumbersArehigherThan4 = numbers.every(number => number > 4);
-// console.log(allNumbersArehigherThan4);
+// EVERY - SOME
+// const allNumbersAreGreaterThan4 = numbers.every(number => number < 5);
+// const allLettersAreInUppercase = letters.every(letter => letter === letter.toUpperCase());
 
-// const anyNumberArehigherThan4 = numbers.some(number => number > 4);
+// console.log(allNumbersAreGreaterThan4);
 
-// console.log(anyNumberArehigherThan4);
+// const anyNumbersAreGreaterThan4 = numbers.some(number => number < 5);
+// const anyLettersAreInUppercase = letters.some(letter => letter === letter.toUpperCase());
 
-const usersObject = [
+// console.log(anyNumbersAreGreaterThan4);
+// console.log(anyLettersAreInUppercase);
+
+const users = [
   {
     id: 1,
-    name: 'Patri'
+    name: 'Macarena'
   },
   {
     id: 2,
-    name: 'Amanda'
+    name: 'Xavi'
   },
   {
     id: 3,
-    name: 'Juan'
+    name: 'Diego'
+  },
+  {
+    id: 4,
+    name: 'Josefa'
   }
 ];
 
-// const foundedUser = users.find(user => user.id === 4);
+// FIND
+// const userFound = users.find(user => user.id === 2);
 
-// console.log(foundedUser);
+// console.log(userFound);
 
-// const foundedUserIndex = users.findIndex(user => user.id === 1);
+// SORT
 
-// console.log(foundedUserIndex);
-
-const numbers = [2, 4, 3, 8, 8, 1, 7];
-
-// 2 - 4 = +
-// 4 - 3 = -
-
-// NUMEROS
-numbers.sort((a, b) => b - a); // mayor a menor
-console.log(numbers);
-
-numbers.sort((a, b) => a - b); // menor a mayor
-
-console.log(numbers);
+const numbers2 = [8, 4, 5, 1];
 
 /* 
-  positivo
-  negativo
-  0
+  4 - 8 -> negativo [4, 8, 5, 1]
+  5 - 8 -> negativo [4, 5, 8, 1]
+  1 - 8 -> negativo [4, 5, 1, 8]
+  5 - 4 -> positivo [4, 5, 1, 8]
+  1 - 5 -> negativo [4, 1, 5, 8]
+  5 - 4 -> positivo [4, 1, 5, 8]
+  1 - 4 -> negativo [1, 4, 5, 8]
+
+  menor a mayor a - b
+  mayor a menor b - a
+
 */
 
-// const users = ['Juan', 'patri', 'amanda', 'Adrián', 'árbol'];
+// numbers2.sort((a, b) => b - a);
 
-// users.sort((a, b) => a.localeCompare(b));
+// console.log(numbers2);
 
-// console.log(users);
+// const names = ['Josefa', 'macarena', 'xavi', 'diego', 'Victor', 'árbol', 'Árbola'];
+
+// names.sort((a, b) => b.localeCompare(a));
+
+// console.log(names);
+
+// REDUCE
 
 // let total = 0;
 
-// for (const number of numbers) {
-//   total += number;
+// for (const number of numbers2) {
+//   total = total + number;
 // }
+
+// const total = numbers2.reduce((valorAcumulado, number) => {
+//   console.log(valorAcumulado);
+//   return valorAcumulado + number;
+// });
 
 // console.log(total);
 
-const total = numbers.reduce((acc, number) => number + acc);
-console.log(total);
+const wordArray = 'Macarena y Xavier';
 
-const wordToReduce = 'Ordenador';
-console.log(wordToReduce.split(''));
+const newWord = wordArray.split('').reduce((acc, letter) => {
+  if (letter === ' ') {
+    return acc + '-';
+  }
 
-const word = wordToReduce.split('').reduce((acc, letter) => acc + letter.toUpperCase());
-console.log(word);
+  if (letter === 'a') {
+    return acc + 8;
+  }
+
+  return acc + letter;
+});
+
+console.log(newWord);
